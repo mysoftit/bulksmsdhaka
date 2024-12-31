@@ -17,9 +17,41 @@ class BulkSMS
         if (empty($this->apiKey)) {
             throw new \Exception('API key is required in .env file');
         }
-        $url = "{$this->apiUrl}/getBalance";
-        $params = ['api_key' => $this->apiKey];
-        $response = $this->makeRequest('GET', $url, $params);
+        $url = "{$this->apiUrl}/getBalance?apikey={$this->apiKey}";
+        $response = $this->makeRequest('GET', $url);
         return $this->handleResponse($response);
+    }
+
+    private function makeRequest($method, $url, $params)
+    {
+        $client = new Client();
+
+        $options = [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json'
+            ],
+        ];
+
+        if ($method === 'GET') {
+            $options[RequestOptions::QUERY] = $params;
+            $response = $client->get($url, $options);
+        } else {
+            $options[RequestOptions::FORM_PARAMS] = $params;
+            $response = $client->post($url, $options);
+        }
+
+        return json_decode($response->getBody(), true);
+    }
+
+    private function handleResponse($response)
+    {
+        if (isset($response['error']) && $response['error'] == 0) {
+            return $response['data'] ?? $response['msg'];
+        }
+
+        // Log or handle the error as needed
+        // For now, let's throw an exception with the error message
+        throw new \Exception($response['msg'] ?? 'Unknown error');
     }
 }
