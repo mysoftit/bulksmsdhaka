@@ -18,11 +18,13 @@ class BulkSMS
             throw new \Exception('API key is required in .env file');
         }
         $url = "{$this->apiUrl}/getBalance?apikey={$this->apiKey}";
-        $response = $this->makeRequest('GET', $url);
-        return $this->handleResponse($response);
+        $client = new Client();
+        $request = $client->request('GET', $url);
+        $response = json_decode($request->getBody());
+        return $response;
     }
 
-    private function makeRequest($method, $url, $params)
+    private function makeRequest($method, $url)
     {
         $client = new Client();
 
