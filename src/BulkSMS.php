@@ -1,6 +1,8 @@
 <?php
 namespace mysoftit\bulksmsdhaka;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 class BulkSMS
 {
     private $apiUrl = 'https://bulksmsdhaka.com/api/';
@@ -9,7 +11,7 @@ class BulkSMS
     {
         $this->apiKey = env('BULKSMSDHAKA_API_KEY');
     }
-    public function getBalance($name)
+    public function getBalance()
     {
         // check api key
         if (empty($this->apiKey)) {
