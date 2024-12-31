@@ -48,3 +48,11 @@ try {
     // handle $e->getMessage();
 }
 ```
+## License
+This package is open-source software licensed under the <a href="https://github.com/mysoftit/bulksmsdhaka?tab=MIT-1-ov-file">MIT license</a>
+
+## Contribution
+Contributions are welcome! Feel free to submit <a href="https://github.com/mysoftit/bulksmsdhaka/issues">issues</a> or <a href="https://github.com/mysoftit/bulksmsdhaka/pulls">open a pull request</a>.
+
+## Support
+If you have any questions or feedback, please open an <a href="https://github.com/mysoftit/bulksmsdhaka/issues">issues</a> or <a href="https://github.com/mysoftit/bulksmsdhaka/pulls">open a pull request</a>.
