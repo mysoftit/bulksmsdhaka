@@ -1,5 +1,5 @@
 <?php
-namespace bulksmsdhaka;
+namespace mysoftit\bulksmsdhaka;
 
 class BulkSMS
 {
