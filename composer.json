@@ -1,0 +1,18 @@
+{
+    "name": "mysoftit/bulksmsdhaka",
+    "description": "test sms",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mysoftit\\Bulksmsdhaka\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Md.Omar Faruqe",
+            "email": "omarwebkit@gmail.com"
+        }
+    ],
+    "require": {}
+}
