@@ -11,20 +11,33 @@ class BulkSMS
     {
         $this->apiKey = env('BULKSMSDHAKA_API_KEY');
     }
+    //
+    //Get Balance Your SMS Portal
+    public function sendSMS($message, $number)
+    {
+        // check api key is True
+        if (empty($this->apiKey)) {
+            throw new \Exception('API key is required in .env file');
+        }
+        $url = "{$this->apiUrl}/sendtext?apikey={$this->apiKey}&callerID=1234&number={$number}&message={$message}";
+
+        $response = $this->responseRequest('POST', $url);
+        return $response;
+    }
     public function getBalance()
     {
-        // check api key
+        // check api key is True
         if (empty($this->apiKey)) {
             throw new \Exception('API key is required in .env file');
         }
         $url = "{$this->apiUrl}/getBalance?apikey={$this->apiKey}";
-        $client = new Client();
-        $request = $client->request('GET', $url);
-        $response = json_decode($request->getBody());
-        return $response['Balance'];
+
+        $response = $this->responseRequest('GET', $url);
+        return $response;
     }
 
-    private function makeRequest($method, $url)
+    //Response request in api return
+    private function responseRequest($method, $url)
     {
         $client = new Client();
 
@@ -36,24 +49,11 @@ class BulkSMS
         ];
 
         if ($method === 'GET') {
-            $options[RequestOptions::QUERY] = $params;
             $response = $client->get($url, $options);
         } else {
-            $options[RequestOptions::FORM_PARAMS] = $params;
             $response = $client->post($url, $options);
         }
 
         return json_decode($response->getBody(), true);
-    }
-
-    private function handleResponse($response)
-    {
-        if (isset($response['error']) && $response['error'] == 0) {
-            return $response['data'] ?? $response['msg'];
-        }
-
-        // Log or handle the error as needed
-        // For now, let's throw an exception with the error message
-        throw new \Exception($response['msg'] ?? 'Unknown error');
     }
 }

@@ -1,18 +1,32 @@
 {
     "name": "mysoftit/bulksmsdhaka",
     "description": "Bulk SMS Dhaka Package for Laravel - Easy to SMS integration with the SMS Gateway from bulksmsdhaka.com Bulk send messages, check balances, get delivery reports, and manage SMS effortlessly in your Laravel applications.",
+    "keywords": [
+        "laravel",
+        "bulksmsdhaka.com",
+        "Bulk SMS Dhaka",
+        "sms",
+        "sms-gateway",
+        "communication",
+        "gateway",
+        "api",
+        "notification",
+        "message"
+    ],
     "type": "library",
     "license": "MIT",
+    "homepage": "https://github.com/mysoftit/bulksmsdhaka",
+    "authors": [
+        {
+            "name": "Md.Omar Faruqe",
+            "email": "mysoftit13@gmail.com",
+            "role": "Developer",
+            "homepage": "https://github.com/mysoftit"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "mysoftit\\bulksmsdhaka\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "Md.Omar Faruqe",
-            "email": "omarwebkit@gmail.com"
-        }
-    ],
-    "require": {}
 }
