@@ -21,7 +21,7 @@ class BulkSMS
         $client = new Client();
         $request = $client->request('GET', $url);
         $response = json_decode($request->getBody());
-        return $response;
+        return $response['Balance'];
     }
 
     private function makeRequest($method, $url)
