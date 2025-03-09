@@ -37,8 +37,9 @@ try {
 
     // Send SMS
     $response = $sms->sendSMS(
-        "Hello, this is a test SMS! from Bulksmsdhaka.com",
-        "01941698614"
+        "Hello, this is a test SMS! from Bulksmsdhaka.com", //Message
+        "01941698614" //Receiver No
+        "1234" //Non Masking=1234 and Masking Name(Brand Name)
     );
 
    // Check your account SMS balance
